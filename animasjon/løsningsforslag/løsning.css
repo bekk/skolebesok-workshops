@@ -1,0 +1,131 @@
+/* Oppgave 1 */
+@keyframes roter-hale {
+	0% {
+		transform: rotate(0deg);
+	}
+	50% {
+		transform: rotate(1deg);
+	}
+	100% {
+		transform: rotate(0deg);
+	}
+}
+
+.hale {
+	animation-name: roter-hale;
+	animation-duration: 1s; /* Setter varigheten på animasjonsekvensen */
+	transform-origin: bottom left; /* Setter at halen skal rotere rundt nedre midtdel av halen */
+	animation-iteration-count: infinite; /* Setter at animasjonsekvensen skal gjennomføres uendelig antall ganger */
+}
+
+/* Oppgave 2 */
+@keyframes roter-ører {
+	0% {
+		transform: rotate(0deg);
+	}
+	50% {
+		transform: rotate(1deg);
+	}
+	100% {
+		transform: rotate(0deg);
+	}
+}
+
+.ører {
+	animation-name: roter-ører;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	transform-origin: center;
+}
+
+/* Oppgave 3 */
+@keyframes beveg-tunge {
+	0% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(2px);
+	}
+	100% {
+		transform: translateY(0px);
+	}
+}
+
+.tunge {
+	animation-name: beveg-tunge;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+}
+
+/* Oppgave 4 */
+@keyframes beveg-pelle {
+	0% {
+		transform: translateX(100%);
+	}
+
+	50% {
+		transform: translateX(0%);
+	}
+
+	100% {
+		transform: translateX(100%);
+	}
+}
+
+.pelle {
+	animation-name: beveg-pelle;
+	animation-duration: 40s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+/* Oppgave 5 */
+@keyframes beveg-bein {
+	0% {
+		transform: rotate(2deg);
+	}
+
+	50% {
+		transform: rotate(-2deg);
+	}
+
+	100% {
+		transform: rotate(2deg);
+	}
+}
+
+.bein {
+	transform-origin: top center;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes beveg-bein2 {
+	0% {
+		transform: rotate(-2deg);
+	}
+
+	50% {
+		transform: rotate(2deg);
+	}
+
+	100% {
+		transform: rotate(-2deg);
+	}
+}
+
+.høyre-bakben {
+	animation-name: beveg-bein2;
+}
+
+.venstre-forben {
+	animation-name: beveg-bein2;
+}
+
+.høyre-forben {
+	animation-name: beveg-bein;
+}
+
+.venstre-bakben {
+	animation-name: beveg-bein;
+}

@@ -1,0 +1,41 @@
+@keyframes bytt-farge {
+	0% {
+		background-color: red;
+	}
+	50% {
+		background-color: yellow;
+	}
+	100% {
+		background-color: green;
+	}
+}
+
+@keyframes bytt-farge-og-flytt {
+	0% {
+		background-color: red;
+		transform: translateX(0px);
+	}
+	50% {
+		background-color: yellow;
+		transform: translateX(100px);
+	}
+	100% {
+		background-color: green;
+		transform: translateX(0px);
+	}
+}
+
+div {
+	height: 200px;
+	width: 200px;
+}
+
+.div1 {
+	animation-name: bytt-farge;
+	animation-duration: 4s;
+}
+
+.div2 {
+	animation-name: bytt-farge-og-flytt;
+	animation-duration: 4s;
+}
