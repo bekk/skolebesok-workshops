@@ -1,46 +1,9 @@
 # Workshops
 
-# Animasjoner
+## Animasjoner
 
-I denne oppgaven skal du prøve å få hunden Pelle til å bevege seg på skjermen ved bruk av animasjoner i CSS.
-
-Pelle er klar til å bevege seg, og logrer allerede med halen. [Koden finner du her](https://codepen.io/sarahjelle/pen/yLqJree)
-
-## Kort om animasjoner i CSS
-### @keyframes
-Keyframes brukes for å definere stiler for ulike punkter i en animasjon. Hvert slikt punkt kalles en `keyframe`. I eksempelet under brukes `@keyframes` til å beskrive en animasjon hvor bakgrunnen starter som rød (from) og slutter som gul (to). 
-
-```
-@keyframes bytt-farge {
-	from {
-		background-color: red;
-	}
-	to {
-		background-color: yellow;
-	}
-}
-```
-Hvis du ønsker å legge inn flere steg i animasjonen kan du bytte ut `from` og `to` med prosent. Da vil `0%` være starten på animasjonen og `100%` slutten. Eksempelet under vil starte som rød, bli gul halvveis og til slutt bli grønn. 
-```
-@keyframes bytt-farge {
-	0% {
-		background-color: red;
-	}
-	50% {
-		background-color: yellow;
-	}
-	100% {
-		background-color: green;
-	}
-}
-```
-
-
-### Bruke animasjonene
-
-
-### Oppgave 1
-Få 
+I denne oppgaven skal du få hunden Pelle til å bevege ved bruk av CSS.
+![Untitled](https://user-images.githubusercontent.com/46678893/210554994-892c61d3-780e-4619-9949-92f5471fdbed.gif)
 
 ## Backend
 
