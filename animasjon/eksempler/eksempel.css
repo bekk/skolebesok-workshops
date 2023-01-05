@@ -33,9 +33,11 @@ div {
 .div1 {
 	animation-name: bytt-farge;
 	animation-duration: 4s;
+	animation-iteration-count: infinite;
 }
 
 .div2 {
 	animation-name: bytt-farge-og-flytt;
 	animation-duration: 4s;
+	animation-iteration-count: infinite;
 }
