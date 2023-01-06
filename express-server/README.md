@@ -174,7 +174,7 @@ For å få til dette brukte vi metoden `get()` som tar inn to parametere: routin
 🏆 &nbsp;&nbsp; Få serveren til å returnere meldingen "Velkommen til express-workshop".
 
 <details>
-<summary>🚨 Løsningsforslag</summary>
+<summary>🚨 &nbsp; Løsningsforslag</summary>
 Endre hva som står inni `res.send()` så det ser slik ut:
 
 ```javascript
@@ -196,14 +196,14 @@ app.get('/', function(request, response){
 Sjekk om det fungerer ved å besøke http://localhost:3000/meg
 
 <details>
-<summary>💡 Hint</summary>
+<summary>💡 &nbsp; Hint</summary>
 
 Bruk samme fremgangsmetode som oppgave 1. Bytt ut "/" med "/meg" og skriv inn den nye meldingen i `res.send()`.
 
 </details>
 
 <details>
-<summary>🚨 Løsningsforslag</summary>
+<summary>🚨 &nbsp; Løsningsforslag</summary>
 
 ```javascript
 app.get('/meg', function(request, response){
@@ -238,7 +238,7 @@ Tips 💡:
 Prøv å besøke http://localhost:3000/hei/Ola og http://localhost:3000/hei/Kari og sjekk at serveren hilser på de riktige navnene. 
 
 <details>
-<summary>🚨 Løsningsforslag</summary>
+<summary>🚨 &nbsp; Løsningsforslag</summary>
 
 ```javascript
 app.get('/hei/:navn', function (request, response) {
@@ -258,7 +258,7 @@ Denne oppgaven er delt opp i flere deloppgaver.
 Besøk http://localhost:3000/fakta og se om du får meldingen. 
 
 <details>
-<summary>🚨 Løsningsforslag</summary>
+<summary>🚨 &nbsp; Løsningsforslag</summary>
 
 ```javascript
 app.get('/fakta', function (req, res) {
@@ -333,7 +333,7 @@ async function hentFakta() {
 Nå satte vi `data` til å være hele objektet som vi så på skjermen i stad, og den består av `fact` og `length`. Vi kan hente ut `fact` fra `data` ved å skrive `fact.data`. Hvis du besøker http://localhost:3000/fakta skal du nå få en fakta om katter på skjermen, og hvis du refresher siden får du opp en ny fakta.
 
 <details>
-<summary>🚨 Løsningsforslag</summary>
+<summary>🚨 &nbsp; Løsningsforslag</summary>
 
 ```javascript
 app.get('/fakta', async function (req, res) {
@@ -362,7 +362,7 @@ Nå skal vi bruke det vi har lært fra de tidligere oppgavene for å hente infor
 Hvis du besøker http://localhost:3000/temperatur/oslo skal du få meldingen "Jeg vil vite temperaturen i oslo".
 
 <details>
-<summary>🚨 Løsningsforslag</summary>
+<summary>🚨 &nbsp; Løsningsforslag</summary>
 
 ```javascript
 app.get('/temperatur/:by', function (request, response) {
@@ -378,7 +378,7 @@ API-et vi skal hente temperatur-informasjon fra bruker id-er til å finne ut hvi
 🏆 &nbsp;&nbsp; Bytt ut `:by` med `:id` i routingen fra forrige oppgave og endre slik at det er id som lagres (`request.params.id` i stedet for `request.params.by`)
 
 <details>
-<summary>🚨 Løsningsforslag</summary>
+<summary>🚨 &nbsp; Løsningsforslag</summary>
 
 ```javascript
 app.get('/temperatur/:id', function (request, response) {
@@ -427,7 +427,7 @@ Om det fungerer vil se noe lignende dette på skjermen:
 <img width="1713" alt="image" src="https://user-images.githubusercontent.com/46678893/211004257-ca4adead-feef-4f8d-a5c4-b5d84c8fce56.png">
 
 <details>
-<summary>🚨 Løsningsforslag</summary>
+<summary>🚨 &nbsp; Løsningsforslag</summary>
 
 ```javascript
 app.get('/temperatur/:id', async function (request, response) {
@@ -446,3 +446,111 @@ async function hentTemperatur(id) {
 ```
 </details>
 
+<br/>
+
+Nå ønsker vi å presentere dataen fra yr på en måte som gjør det enklere å finne ut dagens temperatur.
+
+Nå får vi veldig mye data fra yr, men vi ønsker kun å finne temperaturen i dag. Dette kan vi gjøre ved å endre på hva vi returnerer fra `hentTemperatur(id)` (slik vi gjorde med katte-faktaen). Da må vi først se litt nærmere på hvordan dataen vi får fra yr ser ut. 
+
+Dataen fra yr inneholder en liste som heter `dayIntervals` som inneholder informasjon om været for den kommende uken. Under kan du se hvordan det ser ut (vi har fjernet litt for å gjøre det litt mer oversiktlig, dette er byttet ut med `...`):
+
+```json
+{
+	"start": "2023-01-06T12:00:00+01:00",
+	"end": "2023-01-06T23:00:00+01:00",
+	"temperature": { "value": -2.2, "min": -2.4, "max": -1.7 },
+	"wind": { "min": 3.3, "max": 4.8, "maxGust": 11 }
+    ...
+}
+```
+
+Vi ønsker å hente ut informasjonen som ligger i `temperature` som vi kan gjøre ved å legge koden under mellom `.then((res) => res.json())` og `.catch((error) => console.log('errors', error));`: 
+
+```javascript
+.then((data) => data.dayIntervals[0].temperature)
+```
+
+Når vi skriver `data.dayIntervals[0].temperature` får vi tilbake et objekt som inneholder informasjon om dagens temperaturer. Dette ser slik ut: 
+
+```json
+{
+	"value": -2.2,
+	"min": -2.4,
+	"max": -1.7
+}
+```
+
+Det vi har gjort er å hente ut kun den informasjonen vi er interessert i. Under finner du en kort forklaring på hvordan det vi har skrevet fungerer:
+
+- `data.dayIntervals` henter ut listen `dayIntervals` fra all dataen vi har fått fra yr. Denne består av informasjon om været flere dager. 
+- `data.dayIntervals[0]` henter ut informasjonen om været i dag fra liste `dayIntervals`. Vi får dagens vær fordi denne ligger først i listen, og ved å skrive `[0]` sier vi at vi ønsker å få det som ligger først. Om vi hadde ønsket været for i morgen kunne vi skrevet `data.dayIntervals[1]`. Legg merke til at vi begynner å telle på 0 og ikke 1, det vil si at 0 er det første, og 1 er det andre osv...
+- `data.dayIntervals[0].temperature` henter ut informasjonen om temperatur for dagen i dag og resultatet er det som ble vist tidligere. Hvis vi ville hatt informasjon om vinden i stedet kunne vi skrevet `data.dayIntervals[0].wind`
+
+🏆 &nbsp;&nbsp; Endre funksjonen `hentTemperatur(id)` slik at den kun returnerer data om temperaturen i dag ved å legge inn `.then((data) => data.dayIntervals[0].temperature)`
+
+Besøk http://localhost:3000/temperatur/1-72837 og sjekk at du får tilbake `{"value":-2.1,"min":-2.4,"max":-1.7}`. OBS: tallene vil være annerledes enn i denne teksten fordi de ble hentet 6. januar. 
+
+<details>
+<summary>🚨 &nbsp; Løsningsforslag</summary>
+
+```javascript
+async function hentTemperatur(id) {
+	return await fetch(
+		`https://www.yr.no/api/v0/locations/${id}/forecast?api_key=%2Fapi%2Fv0%2Flocations%2F%7BId%7D%2Fforecast`
+	)
+		.then((res) => res.json())
+		.then((data) => data.dayIntervals[0].temperature)
+		.catch((error) => console.log('errors', error));
+}
+```
+</details>
+
+<br/>
+
+🏆 &nbsp;&nbsp; Endre routingen for "/temperatur/:id" slik at den returnerer teksten "I dag vil det på kaldeste bli [min temperaturen] grader og på det varmeste bli [maks temperaturen] grader". Sjekk hintet om du er usikker på hvordan du henter ut de ulike gradene eller hvordan det kan legges til i teksten. 
+
+Besøk http://localhost:3000/temperatur/1-72837 og sjekk været i Oslo for i dag. 
+
+<details>
+<summary>💡 &nbsp; Hint </summary>
+
+Du kan hente ut gradene ved å skrive `temperatur.min` og `temperatur.max`. 
+
+Du kan legge inn dette i teksten ved å bruke de spesielle fnuttene ``` `` ``` og putte det innenfor `${}` som dette eksempelet: ``` `Min temp: ${temperatur.min}` ```
+
+```javascript
+async function hentTemperatur(id) {
+	return await fetch(
+		`https://www.yr.no/api/v0/locations/${id}/forecast?api_key=%2Fapi%2Fv0%2Flocations%2F%7BId%7D%2Fforecast`
+	)
+		.then((res) => res.json())
+		.then((data) => data.dayIntervals[0].temperature)
+		.catch((error) => console.log('errors', error));
+}
+```
+</details>
+
+<details>
+<summary>🚨 &nbsp; Løsningsforslag</summary>
+
+```javascript
+app.get('/temperatur/:id', async function (request, response) {
+	const id = request.params.id;
+	const temperatur = await hentTemperatur(id);
+	response.send(
+		`I dag vil det på kaldeste bli ${temperatur.min} grader og på det varmeste bli${temperatur.max}`
+	);
+});
+```
+</details>
+
+<br/>
+
+🏆 &nbsp;&nbsp; Sjekk været i Trondheim ved å bruke id `1-211102`
+
+Hvis du ønsker å sjekke været et annet sted kan du finne id-en til stedet ved å: 
+1. Gå til yr.no
+2. Søk opp stedet du ønsker å bruke
+3. Se på URL-en: id-en er på formatet `x-xxxxx` og står etter "https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/daglig-tabell/" 
+
+For Bergen ser URL-en slik ut https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/1-92416/Norge/Vestland/Bergen/Bergen og id-en er da `1-92416`.

@@ -45,7 +45,9 @@ async function hentFakta() {
 app.get('/temperatur/:id', async function (request, response) {
 	const id = request.params.id;
 	const temperatur = await hentTemperatur(id);
-	response.send(temperatur);
+	response.send(
+		`I dag vil det på kaldeste bli ${temperatur.min} grader og på det varmeste bli${temperatur.max}`
+	);
 });
 
 async function hentTemperatur(id) {
@@ -53,26 +55,6 @@ async function hentTemperatur(id) {
 		`https://www.yr.no/api/v0/locations/${id}/forecast?api_key=%2Fapi%2Fv0%2Flocations%2F%7BId%7D%2Fforecast`
 	)
 		.then((res) => res.json())
+		.then((data) => data.dayIntervals[0].temperature)
 		.catch((error) => console.log('errors', error));
 }
-
-/** SLETT */
-// let hentVar = async (req) => {
-//     return await fetch(
-//       `https://www.yr.no/api/v0/locations/${req.params.id}/forecast?api_key=%2Fapi%2Fv0%2Flocations%2F%7BId%7D%2Fforecast`
-//     )
-//       .then((res) => res.json())
-//       .then((data) => data.dayIntervals[0].temperature)
-//       .catch((error) => console.log("errors", error));
-//   };
-
-//   app.get("/ver/:id", async function (req, res) {
-//     let data = await hentVar(req);
-//     console.log("yihaaa", data);
-//     res.send(
-//       `Temperaturen er: ${data.value}. /n
-//       Makstemperaturen er: ${data.max}.
-//       Minstetemperaturen er: ${data.min}.`
-//     );
-//
-// }
