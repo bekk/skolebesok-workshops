@@ -1,23 +1,54 @@
-# Server med  
+# Workshop: Sette opp en server med Nodejs og Express 
 
 I denne workshoppen skal lage en server ved bruk av Node.js og Express.
 
 ## 🤓 Litt bakgrunnsinformasjon  
 
 ### Hva er en server?
-Innenfor webutvikling brukes en server for å lagre og organisere data og sende informsjon som skal vises på en nettside. Frontend (nettsiden) får informasjonen fra en server ved å sende et _kall_ til serveren, og presenterer dette for brukeren. På nettsiden ser man da ofte en "penere" versjon av informasjonen. 
+Innenfor webutvikling brukes en server for å lagre og organisere data, og sende informsjon som skal vises på en nettside. Frontend (nettsiden) får informasjonen fra en server ved å sende et _kall_ til serveren, og presenterer deretter dette for brukeren. På nettsiden ser man da ofte en "penere" versjon av informasjonen. 
 
 Frontend forteller serveren hvilken informasjon den ønsker å motta ved å sende _kall_ til spesifikke URL-er. I denne workshoppen skal vi kun lage serveren, og skal derfor sende kall til serveren ved å besøke URL-er direkte i nettleseren.
 
 ### Hva er et API?
-API er et grensesnitt som gir direkte tilgang til data og funksjonalitet i et datasystem, og gjør det svært mye enklere for et system eller en tjeneste å kommuniserer med datasystemet. API-er benyttes i hovedsak av annen programvare, og det er sjelden sluttbrukere har behov for å benytte disse direkte.
+Et API er en samling av URL-er man kan kalle for å kommunisere med serveren, og hente ut informasjon. I dag skal vi både lage vårt egne API og bruke eksisterende API-er.
 
 ## 💻 Oppsett 
+For å sette opp det vi trenger for å lage serveren skal vi bruke terminalen. Under finner du informasjon om hva du må gjøre for å komme i gang. 
+
+1. Start med å åpne terminalen. 
+
+2. Lag en ny mappe ved å lime inn følgende kommando i terminalen: 
+```
+mkdir express-server
+```
+
+3. Gå inn i mappen du nettopp lagde:
+```
+cd express-server
+```
 
 ### Sjekk Node-versjonen din
-Lag guide her
+Sjekk hvilken node-versjon du bruker ved å skrive dette i terminalen: 
+```
+node -v
+```
 
-Hvis under 18: 
+Da får du tilbake et svar på formatet `v19.0.1`. Hvis du har en versjon under `v18.0.0` må du følge stegene under, hvis du har over kan du hoppe til neste steg i oppsettet. 
+
+Skriv det følgende i terminalen for å laste ned den nyeste versjonen av node:
+
+```
+npm install -g n
+```
+
+```
+n latest
+```
+
+Sjekk at du har fått en versjon over `v18.0.0` ved å skrive: 
+```
+node -v
+```
 
 
 ### Opprette et Node.js prosjekt
