@@ -1,16 +1,18 @@
-# Express 
+# Server med  
 
-I denne workshoppen skal lage en server ved bruk av express.
+I denne workshoppen skal lage en server ved bruk av Node.js og Express.
 
-## Forklaringer 
+## 🤓 Litt bakgrunnsinformasjon  
 
 ### Hva er en server?
-Innenfor webutvikling brukes en server for å lagre og organisere data og sender informsjon som skal vises på en nettside. Den siste delen er det som skjer når vi sender et kall. Ofte lagres denne dataen i en database, men for å forenkle prosessen litt skal vi i dag hente data fra et eksisterende API. 
+Innenfor webutvikling brukes en server for å lagre og organisere data og sende informsjon som skal vises på en nettside. Frontend (nettsiden) får informasjonen fra en server ved å sende et _kall_ til serveren, og presenterer dette for brukeren. På nettsiden ser man da ofte en "penere" versjon av informasjonen. 
+
+Frontend forteller serveren hvilken informasjon den ønsker å motta ved å sende _kall_ til spesifikke URL-er. I denne workshoppen skal vi kun lage serveren, og skal derfor sende kall til serveren ved å besøke URL-er direkte i nettleseren.
 
 ### Hva er et API?
 API er et grensesnitt som gir direkte tilgang til data og funksjonalitet i et datasystem, og gjør det svært mye enklere for et system eller en tjeneste å kommuniserer med datasystemet. API-er benyttes i hovedsak av annen programvare, og det er sjelden sluttbrukere har behov for å benytte disse direkte.
 
-## Oppsett
+## 💻 Oppsett 
 
 ### Sjekk Node-versjonen din
 Lag guide her
@@ -83,7 +85,7 @@ OBS: Du vil få feilmelding i terminalen når du kjører denne kommandoen nå. D
 Serveren kan stoppes ved å trykke `ctrl` + `c`.
 
 ### Installer Express
-I denne workshoppen skal vi bruke `Express.js` for å lage en server. `Express.js` er et rammeverk som gjør det mulig å lage nettapplikasjoner, og for å ta det i bruk må vi først installere det. Dette gjøres ved å skrive følgende kommando i terminalen (pass på at du er i mappen `express-server`)
+I denne workshoppen skal vi bruke `Express.js` for å lage serveren. `Express.js` er et rammeverk som gjør det mulig å lage nettapplikasjoner, og for å ta det i bruk må vi først installere det. Dette gjøres ved å skrive følgende kommando i terminalen (pass på at du er i mappen `express-server`)
 
 ```
 npm install express --save
@@ -507,7 +509,7 @@ async function hentTemperatur(id) {
 
 <br/>
 
-🏆 &nbsp;&nbsp; Endre routingen for "/temperatur/:id" slik at den returnerer teksten "I dag vil det på kaldeste bli [min temperaturen] grader og på det varmeste bli [maks temperaturen] grader". Sjekk hintet om du er usikker på hvordan du henter ut de ulike gradene eller hvordan det kan legges til i teksten. 
+🏆 &nbsp;&nbsp; Endre routingen for "/temperatur/:id" slik at den returnerer teksten "Temperatur nå: [value], minste temperatur: [min temperaturen], maks temperatur: [maks temperaturen]". Sjekk hintet om du er usikker på hvordan du henter ut de ulike gradene eller hvordan det kan legges til i teksten. 
 
 Besøk http://localhost:3000/temperatur/1-72837 og sjekk været i Oslo for i dag. 
 
@@ -538,7 +540,7 @@ app.get('/temperatur/:id', async function (request, response) {
 	const id = request.params.id;
 	const temperatur = await hentTemperatur(id);
 	response.send(
-		`I dag vil det på kaldeste bli ${temperatur.min} grader og på det varmeste bli${temperatur.max}`
+		`I dag vil det på kaldeste bli ${temperatur.min} grader og på det varmeste blir det ${temperatur.max} grader`
 	);
 });
 ```
