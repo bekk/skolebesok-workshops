@@ -424,6 +424,8 @@ Legg merke til at vi sender med `id` i lenken i `fetch()`. Dette er den samme id
 
 Om det fungerer vil se noe lignende dette på skjermen: 
 
+<img width="1713" alt="image" src="https://user-images.githubusercontent.com/46678893/211004257-ca4adead-feef-4f8d-a5c4-b5d84c8fce56.png">
+
 <details>
 <summary>🚨 Løsningsforslag</summary>
 
