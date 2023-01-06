@@ -46,7 +46,7 @@ app.get('/temperatur/:id', async function (request, response) {
 	const id = request.params.id;
 	const temperatur = await hentTemperatur(id);
 	response.send(
-		`I dag vil det på kaldeste bli ${temperatur.min} grader og på det varmeste bli${temperatur.max}`
+		`Temperatur nå: ${temperatur.value}, minste temperatur: ${temperatur.min}, maks temperatur: ${temperatur.max}`
 	);
 });
 

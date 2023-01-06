@@ -519,17 +519,6 @@ Besøk http://localhost:3000/temperatur/1-72837 og sjekk været i Oslo for i dag
 Du kan hente ut gradene ved å skrive `temperatur.min` og `temperatur.max`. 
 
 Du kan legge inn dette i teksten ved å bruke de spesielle fnuttene ``` `` ``` og putte det innenfor `${}` som dette eksempelet: ``` `Min temp: ${temperatur.min}` ```
-
-```javascript
-async function hentTemperatur(id) {
-	return await fetch(
-		`https://www.yr.no/api/v0/locations/${id}/forecast?api_key=%2Fapi%2Fv0%2Flocations%2F%7BId%7D%2Fforecast`
-	)
-		.then((res) => res.json())
-		.then((data) => data.dayIntervals[0].temperature)
-		.catch((error) => console.log('errors', error));
-}
-```
 </details>
 
 <details>
@@ -540,7 +529,7 @@ app.get('/temperatur/:id', async function (request, response) {
 	const id = request.params.id;
 	const temperatur = await hentTemperatur(id);
 	response.send(
-		`I dag vil det på kaldeste bli ${temperatur.min} grader og på det varmeste blir det ${temperatur.max} grader`
+		`Temperatur nå: ${temperatur.value}, minste temperatur: ${temperatur.min}, maks temperatur: ${temperatur.max}`
 	);
 });
 ```
