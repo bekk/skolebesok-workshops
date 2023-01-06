@@ -52,28 +52,16 @@ node -v
 
 
 ### Opprette et Node.js prosjekt
-For å sette opp det vi trenger for å lage serveren skal vi bruke terminalen. Under finner du informasjon om hva du må gjøre for å komme i gang. 
+For å opprette et node-prosjekt følger du stegene under. Pass på at du er i riktig mappe (`express-server`)
 
-1. Start med å åpne terminalen. 
-
-2. Lag en ny mappe ved å lime inn følgende kommando i terminalen: 
-```
-mkdir express-server
-```
-
-3. Gå inn i mappen du nettopp lagde:
-```
-cd express-server
-```
-
-4. Opprett et node-prosjekt:
+1. Opprett et node-prosjekt:
 ```
 npm init
 ```
 
-5. Nå får du en del spørsmål om hvordan du ønsker å sette opp prosjektet, da kan du trykke `enter` på alle stegene (siste spørsmål er "Is this OK? (yes))
+2. Nå får du en del spørsmål om hvordan du ønsker å sette opp prosjektet, da kan du trykke `enter` på alle stegene (siste spørsmål er "Is this OK? (yes))
 
-6. Åpne mappen du har laget i VSCode. 
+3. Åpne mappen du har laget i VSCode. 
 
 I mappen du har laget har det nå kommet en fil som heter `package.json`. Dette er en fil som inneholder metadata om prosjektet og informerer om de funksjonelle avhengighetene som serveren krever. 
 
@@ -122,20 +110,22 @@ I denne workshoppen skal vi bruke `Express.js` for å lage serveren. `Express.js
 npm install express --save
 ```
 
-Ved å kjøre denne kommandoen legger vi til `Express.js` som en avhengighet i prosjektet, og det vil det automatisk legges til kode i prosjektet ditt. 
+Ved å kjøre denne kommandoen legger vi til `Express.js` som en avhengighet i prosjektet, og det vil automatisk legges til kode i prosjektet ditt. 
 
 I filen `package.json` blir det lagt til en kodesnutt som gir informasjon om den nye avhengigheten og hvilken versjon som brukes. Dette ser slik ut (tallene bak express er versjonen og kan variere avhengig av når man installerer): 
 
 ```json
 "dependencies": {
-		"express": "^4.18.2"
+	"express": "^4.18.2"
 }
 ```
 
-I tillegg opprettes det en fil som heter `package-lock.json` og en mappe som heter `node_modules`. Filen `package-lock.json` er laget automatisk, og den skal ikke endres. Den beskriver akkurat hvilke avhengigheter som er installert, slik at andre personer kan installere de samme avhengighetene i prosjektet på sin egen pc. Mappen `node_modules` inneholder en kopi av alle avhengigheter som er installert og generes automatisk basert på innholdet i `package-lock.json` filen. 
+I tillegg opprettes det en fil som heter `package-lock.json` og en mappe som heter `node_modules`. Filen `package-lock.json` er laget automatisk, og den skal ikke endres. Den beskriver akkurat hvilke avhengigheter og versjoner som er installert, slik at andre personer kan installere de samme avhengighetene i prosjektet på sin egen pc. Mappen `node_modules` inneholder en kopi av alle avhengigheter som er installert og generes automatisk basert på innholdet i `package-lock.json` filen. 
 
 ### Ta i bruk Express.js
-Før vi starter oppgavene skal vi sette opp filen `index.js`. Start med å lage en fil som heter `index.js` i mappen `express-server`. Deretter skal du fylle inn følgende i filen: 
+Før vi starter oppgavene skal vi sette opp filen `index.js`. 
+
+Start med å lage en fil som heter `index.js` i mappen `express-server`. Deretter skal du fylle inn følgende i filen: 
 
 1. Importer express:
 ```javascript
@@ -184,7 +174,7 @@ Server lytter på port 3000
 Når du besøker denne siden sender du et kall til api-routingen "/". Siden vi ikke har fortalt serveren hva den skal gjøre når den mottar et slikt kall vil den svare med feilmeldingen `Cannot GET /` som du ser på skjermen. Dette skal vi fikse gjennom oppgavene!
 
 ---
-## Oppgaver 🏆
+## 🏆 Oppgaver
 
 ### Oppgave 1 - Sett opp din første routing
 For å fjerne feilmeldingen vi får når vi besøker http://localhost:3000/ må vi fortelle serveren hva den skal gjøre når den mottar et kall fra "/". Dette kan vi gjøre ved å skrive følgende i `index.js` filen: 
@@ -199,12 +189,12 @@ Hvis du refresher (`ctrl` + `r`) nettleserviduet vil du få meldingen "Hello Wor
 
 **Hva skjedde nå?**
 
-Når du besøker http://localhost:3000/ sendes det et kall til "/". Dette kallet er en GET-request (forespørsel), det vil si at nettleseren _ber_ om data fra serveren, og vi har fortalt serveren hva den skal sende tilbake om om den mottar et slikt kall.
+Når du besøker http://localhost:3000/ sendes det et kall til "/". Dette kallet er en GET-request (forespørsel), det vil si at nettleseren _ber_ om data fra serveren, og med koden har vi fortalt serveren hva den skal sende tilbake om om den mottar et slikt kall.
 
-For å få til dette brukte vi metoden `get()` som tar inn to parametere: routingen ("/") og en funksjon som beskriver hvordan forespørselen skal håndteres. Denne funksjonen tar inn `request` og `response`. `request` er et objekt som inneholder informasjon om forespørselen som er sendt inn, og `response` brukes for å sende et svar tilbake. Vi sende et svar tilbake ved å skrive `response.send()` og legge inn en tekst. 
+For å få til dette brukte vi metoden `get()` som tar inn to parametere: routingen ("/") og en funksjon som beskriver hvordan forespørselen skal håndteres. Denne funksjonen tar inn `request` og `response`. `request` er et objekt som inneholder informasjon om forespørselen som er sendt inn, og `response` brukes for å sende et svar tilbake. Vi sendte et svar tilbake ved å skrive `response.send()` og la inn en tekst. 
 
 
-🏆 &nbsp;&nbsp; Få serveren til å returnere meldingen "Velkommen til express-workshop".
+🏆 &nbsp; Få serveren til å returnere meldingen "Velkommen til express-workshop" i stedet for "Hello world!"
 
 <details>
 <summary>🚨 &nbsp; Løsningsforslag</summary>
