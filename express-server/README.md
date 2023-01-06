@@ -150,7 +150,8 @@ Server lytter på port 3000
 
 Når du besøker denne siden sender du et kall til api-routingen "/". Siden vi ikke har fortalt serveren hva den skal gjøre når den mottar et slikt kall vil den svare med feilmeldingen `Cannot GET /` som du ser på skjermen. Dette skal vi fikse gjennom oppgavene!
 
-## Oppgaver
+---
+## Oppgaver 🏆
 
 ### Oppgave 1 - Sett opp din første routing
 For å fjerne feilmeldingen vi får når vi besøker http://localhost:3000/ må vi fortelle serveren hva den skal gjøre når den mottar et kall fra "/". Dette kan vi gjøre ved å skrive følgende i `index.js` filen: 
@@ -170,7 +171,7 @@ Når du besøker http://localhost:3000/ sendes det et kall til "/". Dette kallet
 For å få til dette brukte vi metoden `get()` som tar inn to parametere: routingen ("/") og en funksjon som beskriver hvordan forespørselen skal håndteres. Denne funksjonen tar inn `request` og `response`. `request` er et objekt som inneholder informasjon om forespørselen som er sendt inn, og `response` brukes for å sende et svar tilbake. Vi sende et svar tilbake ved å skrive `response.send()` og legge inn en tekst. 
 
 
-🏆 Få serveren til å returnere meldingen "Velkommen til express-workshop".
+🏆 &nbsp;&nbsp; Få serveren til å returnere meldingen "Velkommen til express-workshop".
 
 <details>
 <summary>🚨 Løsningsforslag</summary>
@@ -186,12 +187,13 @@ app.get('/', function(request, response){
 </details>
 
 ---
+</br>
 
 ### Oppgave 2 - Lag en routing med informasjon om deg selv
 
-🏆  Lag en routing som heter "/meg" og få serveren til å returnere "Hei jeg heter [ditt navn] og jeg er [din alder] år gammel".
+🏆 &nbsp;&nbsp; Lag en routing som heter "/meg" og få serveren til å returnere "Hei jeg heter [ditt navn] og jeg er [din alder] år gammel".
 
-Sjekk om det fungerer ved å besøke "
+Sjekk om det fungerer ved å besøke http://localhost:3000/meg
 
 <details>
 <summary>💡 Hint</summary>
@@ -211,11 +213,47 @@ app.get('/meg', function(request, response){
 
 </details>
 
+--- 
+<br/>
+
+### Oppgave 3 - Lag en routing med varierende informasjon
+Nå skal vi lage en routing som tar inn et parameter. Dette gjør at vi kan variere en del av routing som besøkes, men få det samme svaret. 
+
+Lim inn koden under i `index.js`: 
+```javascript
+app.get('/test/:tall', function(request, response){
+	response.send('Dette er en eksempeltekst');
+});
+```
+
+Prøv å besøke http://localhost:3000/test/1 og http://localhost:3000/test/2. Får du samme innhold? 
+- Dette er fordi vi har definert en routing hvor deler av den kan varieres. Dette gjorde vi ved å skrive `:tall` i routingen. Ved å skrive `:` foran forteller vi serveren at denne delen er varierende. 
+
+🏆 &nbsp;&nbsp; Lag en routing for "hei/:navn" som returnerer "Hei [navn]!"
+
+Tips 💡: 
+- Parametere som sendes inn finnes i `request` og du kan få tak i navnet ved å bruke `request.params.navn`. 
+- Lagre navnet som kommer inn i en variabel og legg det inn i teksten slik: ``` `Hei ${navn}!` ``` (legg merke til de spesielle fnuttene som brukes).
+
+Prøv å besøke http://localhost:3000/hei/Ola og http://localhost:3000/hei/Kari og sjekk at serveren hilser på de riktige navnene. 
+
+<details>
+<summary>🚨 Løsningsforslag</summary>
+
+```javascript
+app.get('/hei/:navn', function (request, response) {
+	const navn = request.params.navn;
+	response.send(`Hei ${navn}!`);
+});
+```
+
+</details>
+
 ---
-### Oppgave 3 - Hent data fra eksternt API
+### Oppgave 4 - Hent data fra eksternt API
 Denne oppgaven er delt opp i flere deloppgaver.
 
-🏆 Lag en routingen `/fakta` som returnerer meldingen "Her kommer det snart fakta". 
+🏆 &nbsp;&nbsp; Lag en routingen `/fakta` som returnerer meldingen "Her kommer det snart fakta". 
 
 Besøk http://localhost:3000/fakta og se om du får meldingen. 
 
@@ -232,7 +270,7 @@ app.get('/fakta', function (req, res) {
 
 <br />
 
-🏆 Hent en tilfeldig fakta om katter: 
+🏆 &nbsp;&nbsp; Hent en tilfeldig fakta om katter: 
 
 1. Lag en funksjon med navn hentFakta() som returnerer "Her kommer det snart fakta": 
 ```javascript
@@ -314,27 +352,14 @@ async function hentFakta() {
 </details>
 
 --- 
+<br/>
 
-### Oppgave 4 - Lag en routing med varierende informasjon
-Nå skal vi lage en routing som tar inn et parameter. Dette gjør at vi kan variere en del av routing som besøkes, men få det samme svaret. 
+### Oppgave 5 - Hent informasjon om temperatur fra Yr.no
+Nå skal vi bruke det vi har lært fra de tidligere oppgavene for å hente informasjon om temperatur i ulike byer i Norge fra yr.no. Denne oppgaven er delt opp i flere deloppgaver. 
 
-Lim inn koden under i `index.js`: 
-```javascript
-app.get('/test/:tall', function(request, response){
-	response.send('Dette er en eksempeltekst');
-});
-```
+🏆 &nbsp;&nbsp; Lag routingen `/temperatur/:by`, lagre by i en variabel og returner en melding som sier "Jeg vil vite været i [by]!". 
 
-Prøv å besøke http://localhost:3000/test/1 og http://localhost:3000/test/2. Får du samme innhold? 
-- Dette er fordi vi har definert en routing hvor deler av den kan varieres. Dette gjorde vi ved å skrive `:tall` i routingen. Ved å skrive `:` foran forteller vi serveren at denne delen er varierende. 
-
-🏆 Lag routingen `/temperatur/:by` og returner en melding som sier "Jeg vil vite været i [by]!". 
-
-Hvis du besøker http://localhost:3000/hei/Ola skal du få meldingen "Hei Ola!"
-
-Tips 💡: 
-- Parametere som sendes inn finnes i `request` og du kan få tak i navnet ved å bruke `request.params.by`. 
-- Lagre navnet som kommer inn i en variabel og legg det inn i teksten slik: ``` `Jeg vil vite temperaturen i ${by}!` ``` (legg merke til de spesielle fnuttene som brukes).
+Hvis du besøker http://localhost:3000/temperatur/oslo skal du få meldingen "Jeg vil vite temperaturen i oslo".
 
 <details>
 <summary>🚨 Løsningsforslag</summary>
@@ -348,5 +373,74 @@ app.get('/temperatur/:by', function (request, response) {
 
 </details>
 
-### Oppgave 4 - Hent informasjon om temperatur fra Yr.no
+API-et vi skal hente temperatur-informasjon fra bruker id-er til å finne ut hvilken informasjon som skal returneres. En id (identifikator) er en unik måte å beskrive noe på. For eksempel så har yr gitt Oslo by id-en `1-72837`, og ved å bruke denne id-en vet de akkurat hvilken by de skal lete etter. 
+
+🏆 &nbsp;&nbsp; Bytt ut `:by` med `:id` i routingen fra forrige oppgave og endre slik at det er id som lagres (`request.params.id` i stedet for `request.params.by`)
+
+<details>
+<summary>🚨 Løsningsforslag</summary>
+
+```javascript
+app.get('/temperatur/:id', function (request, response) {
+	const id = request.params.id;
+	response.send(`Jeg vil vite temperaturen i by med id ${id}!`);
+});
+```
+</details>
+
+🏆 &nbsp;&nbsp; Lag funksjonen `hentTemperatur(id)` som henter informasjon om været fra yr.no:
+
+1. Lag en funksjon `hentTemperatur(id)` som tar inn en id og returnerer "Her skal vi finne temperaturen": 
+
+```javascript
+function hentTemperatur(id) {
+	return 'Her skal vi finne temperaturen';
+}
+```
+
+2. Bruk `hentTemperatur(id)` i routingen "/temperatur/id" ved å sende inn id-en du lagret tidligere: 
+```javascript
+app.get('/temperatur/:id', function (request, response) {
+	const id = request.params.id;
+	const temperatur = hentTemperatur(id);
+	response.send(temperatur);
+});
+```
+
+3. Skriv om `hentTemperatur(id)` slik at den bruker `fetch()` for å hente data fra yr: 
+```javascript
+function hentTemperatur(id) {
+	return fetch(
+		`https://www.yr.no/api/v0/locations/${id}/forecast?api_key=%2Fapi%2Fv0%2Flocations%2F%7BId%7D%2Fforecast`
+	)
+		.then((res) => res.json())
+		.catch((error) => console.log('errors', error));
+}
+```
+
+Legg merke til at vi sender med `id` i lenken i `fetch()`. Dette er den samme id-en som vi skriver inn i nettadressen som vi besøker når vi går til http://localhost:3000/temperatur/1-72837.
+
+4. Hvis du besøker http://localhost:3000/temperatur/1-72837 nå får du `{}` og ikke informasjon om været. Dette er fordi vi ikke har bedt serveren vår om å vente på svar fra yr. Prøv å løse dette ved å bruke `async` for å gjøre funksjonene asynkrone og `await` for å vente på svar. HINT💡: Se på hvordan vi gjorde det med katte-faktaene.
+
+Om det fungerer vil se noe lignende dette på skjermen: 
+
+<details>
+<summary>🚨 Løsningsforslag</summary>
+
+```javascript
+app.get('/temperatur/:id', async function (request, response) {
+	const id = request.params.id;
+	const temperatur = await hentTemperatur(id);
+	response.send(temperatur);
+});
+
+async function hentTemperatur(id) {
+	return await fetch(
+		`https://www.yr.no/api/v0/locations/${id}/forecast?api_key=%2Fapi%2Fv0%2Flocations%2F%7BId%7D%2Fforecast`
+	)
+		.then((res) => res.json())
+		.catch((error) => console.log('errors', error));
+}
+```
+</details>
 

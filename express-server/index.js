@@ -8,23 +8,27 @@ app.listen(port, () => {
 	console.log(`Server lytter på port ${port}`);
 });
 
+/** Oppgave 1 */
 app.get('/', function (request, response) {
 	response.send('Velkommen til express-workshop');
 });
 
+/** Oppgave 2 */
 app.get('/meg', function (request, response) {
 	response.send('Hei jeg heter Sara og jeg er 24 år gammel');
 });
 
+/** Oppgave 3 */
 app.get('/test/:test', function (request, response) {
 	response.send('Dette er en eksempeltekst');
 });
 
-app.get('/temperatur/:by', function (request, response) {
-	const by = request.params.by;
-	response.send(`Jeg vil vite temperaturen i ${by}!`);
+app.get('/hei/:navn', function (request, response) {
+	const navn = request.params.navn;
+	response.send(`Hei ${navn}!`);
 });
 
+/** Oppgave 4 */
 app.get('/fakta', async function (req, res) {
 	const fakta = await hentFakta();
 	res.send(fakta);
@@ -32,7 +36,43 @@ app.get('/fakta', async function (req, res) {
 
 async function hentFakta() {
 	return await fetch(`https://catfact.ninja/fact`)
-		.then((response) => response.json()) // Gjør svaret om til JSON-format
-		.then((data) => data.fact) // Returner data om alt fungerer som det skal
-		.catch((error) => console.log(error)); // Print en feilmelding om noe går galt
+		.then((response) => response.json())
+		.then((data) => data.fact)
+		.catch((error) => console.log(error));
 }
+
+/** Oppgave 5 */
+app.get('/temperatur/:id', async function (request, response) {
+	const id = request.params.id;
+	const temperatur = await hentTemperatur(id);
+	response.send(temperatur);
+});
+
+async function hentTemperatur(id) {
+	return await fetch(
+		`https://www.yr.no/api/v0/locations/${id}/forecast?api_key=%2Fapi%2Fv0%2Flocations%2F%7BId%7D%2Fforecast`
+	)
+		.then((res) => res.json())
+		.catch((error) => console.log('errors', error));
+}
+
+/** SLETT */
+// let hentVar = async (req) => {
+//     return await fetch(
+//       `https://www.yr.no/api/v0/locations/${req.params.id}/forecast?api_key=%2Fapi%2Fv0%2Flocations%2F%7BId%7D%2Fforecast`
+//     )
+//       .then((res) => res.json())
+//       .then((data) => data.dayIntervals[0].temperature)
+//       .catch((error) => console.log("errors", error));
+//   };
+
+//   app.get("/ver/:id", async function (req, res) {
+//     let data = await hentVar(req);
+//     console.log("yihaaa", data);
+//     res.send(
+//       `Temperaturen er: ${data.value}. /n
+//       Makstemperaturen er: ${data.max}.
+//       Minstetemperaturen er: ${data.min}.`
+//     );
+//
+// }
