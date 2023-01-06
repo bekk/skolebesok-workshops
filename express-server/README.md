@@ -194,10 +194,10 @@ Når du besøker http://localhost:3000/ sendes det et kall til "/". Dette kallet
 For å få til dette brukte vi metoden `get()` som tar inn to parametere: routingen ("/") og en funksjon som beskriver hvordan forespørselen skal håndteres. Denne funksjonen tar inn `request` og `response`. `request` er et objekt som inneholder informasjon om forespørselen som er sendt inn, og `response` brukes for å sende et svar tilbake. Vi sendte et svar tilbake ved å skrive `response.send()` og la inn en tekst. 
 
 
-🏆 &nbsp; Få serveren til å returnere meldingen "Velkommen til express-workshop" i stedet for "Hello world!"
+🏆  Få serveren til å returnere meldingen "Velkommen til express-workshop" i stedet for "Hello world!"
 
 <details>
-<summary>🚨 &nbsp; Løsningsforslag</summary>
+<summary>🚨  Løsningsforslag</summary>
 Endre hva som står inni `res.send()` så det ser slik ut:
 
 ```javascript
@@ -214,19 +214,19 @@ app.get('/', function(request, response){
 
 ### Oppgave 2 - Lag en routing med informasjon om deg selv
 
-🏆 &nbsp;&nbsp; Lag en routing som heter "/meg" og få serveren til å returnere "Hei jeg heter [ditt navn] og jeg er [din alder] år gammel".
+🏆  Lag en routing som heter "/meg" og få serveren til å returnere "Hei jeg heter [ditt navn] og jeg er [din alder] år gammel".
 
 Sjekk om det fungerer ved å besøke http://localhost:3000/meg
 
 <details>
-<summary>💡 &nbsp; Hint</summary>
+<summary>💡  Hint</summary>
 
 Bruk samme fremgangsmetode som oppgave 1. Bytt ut "/" med "/meg" og skriv inn den nye meldingen i `res.send()`.
 
 </details>
 
 <details>
-<summary>🚨 &nbsp; Løsningsforslag</summary>
+<summary>🚨  Løsningsforslag</summary>
 
 ```javascript
 app.get('/meg', function(request, response){
@@ -240,7 +240,7 @@ app.get('/meg', function(request, response){
 <br/>
 
 ### Oppgave 3 - Lag en routing med varierende informasjon
-Nå skal vi lage en routing som tar inn et parameter. Dette gjør at vi kan variere en del av routing som besøkes, men få det samme svaret. 
+Nå skal vi lage en routing som tar inn et parameter. Dette gjør at vi kan variere en del av URL-en som besøkes, men få det samme svaret. 
 
 Lim inn koden under i `index.js`: 
 ```javascript
@@ -252,7 +252,7 @@ app.get('/test/:tall', function(request, response){
 Prøv å besøke http://localhost:3000/test/1 og http://localhost:3000/test/2. Får du samme innhold? 
 - Dette er fordi vi har definert en routing hvor deler av den kan varieres. Dette gjorde vi ved å skrive `:tall` i routingen. Ved å skrive `:` foran forteller vi serveren at denne delen er varierende. 
 
-🏆 &nbsp;&nbsp; Lag en routing for "hei/:navn" som returnerer "Hei [navn]!"
+🏆  Lag en routing for "hei/:navn" som returnerer "Hei [navn]!"
 
 Tips 💡: 
 - Parametere som sendes inn finnes i `request` og du kan få tak i navnet ved å bruke `request.params.navn`. 
@@ -261,7 +261,7 @@ Tips 💡:
 Prøv å besøke http://localhost:3000/hei/Ola og http://localhost:3000/hei/Kari og sjekk at serveren hilser på de riktige navnene. 
 
 <details>
-<summary>🚨 &nbsp; Løsningsforslag</summary>
+<summary>🚨  Løsningsforslag</summary>
 
 ```javascript
 app.get('/hei/:navn', function (request, response) {
@@ -276,12 +276,12 @@ app.get('/hei/:navn', function (request, response) {
 ### Oppgave 4 - Hent data fra eksternt API
 Denne oppgaven er delt opp i flere deloppgaver.
 
-🏆 &nbsp;&nbsp; Lag en routingen `/fakta` som returnerer meldingen "Her kommer det snart fakta". 
+🏆  Lag en routingen `/fakta` som returnerer meldingen "Her kommer det snart fakta". 
 
 Besøk http://localhost:3000/fakta og se om du får meldingen. 
 
 <details>
-<summary>🚨 &nbsp; Løsningsforslag</summary>
+<summary>🚨  Løsningsforslag</summary>
 
 ```javascript
 app.get('/fakta', function (req, res) {
@@ -293,7 +293,7 @@ app.get('/fakta', function (req, res) {
 
 <br />
 
-🏆 &nbsp;&nbsp; Hent en tilfeldig fakta om katter: 
+🏆  Hent en tilfeldig fakta om katter: 
 
 1. Lag en funksjon med navn hentFakta() som returnerer "Her kommer det snart fakta": 
 ```javascript
@@ -356,7 +356,7 @@ async function hentFakta() {
 Nå satte vi `data` til å være hele objektet som vi så på skjermen i stad, og den består av `fact` og `length`. Vi kan hente ut `fact` fra `data` ved å skrive `fact.data`. Hvis du besøker http://localhost:3000/fakta skal du nå få en fakta om katter på skjermen, og hvis du refresher siden får du opp en ny fakta.
 
 <details>
-<summary>🚨 &nbsp; Løsningsforslag</summary>
+<summary>🚨  Løsningsforslag</summary>
 
 ```javascript
 app.get('/fakta', async function (req, res) {
@@ -380,12 +380,12 @@ async function hentFakta() {
 ### Oppgave 5 - Hent informasjon om temperatur fra Yr.no
 Nå skal vi bruke det vi har lært fra de tidligere oppgavene for å hente informasjon om temperatur i ulike byer i Norge fra yr.no. Denne oppgaven er delt opp i flere deloppgaver. 
 
-🏆 &nbsp;&nbsp; Lag routingen `/temperatur/:by`, lagre by i en variabel og returner en melding som sier "Jeg vil vite været i [by]!". 
+🏆  Lag routingen `/temperatur/:by`, lagre by i en variabel og returner en melding som sier "Jeg vil vite været i [by]!". 
 
 Hvis du besøker http://localhost:3000/temperatur/oslo skal du få meldingen "Jeg vil vite temperaturen i oslo".
 
 <details>
-<summary>🚨 &nbsp; Løsningsforslag</summary>
+<summary>🚨  Løsningsforslag</summary>
 
 ```javascript
 app.get('/temperatur/:by', function (request, response) {
@@ -398,10 +398,10 @@ app.get('/temperatur/:by', function (request, response) {
 
 API-et vi skal hente temperatur-informasjon fra bruker id-er til å finne ut hvilken informasjon som skal returneres. En id (identifikator) er en unik måte å beskrive noe på. For eksempel så har yr gitt Oslo by id-en `1-72837`, og ved å bruke denne id-en vet de akkurat hvilken by de skal lete etter. 
 
-🏆 &nbsp;&nbsp; Bytt ut `:by` med `:id` i routingen fra forrige oppgave og endre slik at det er id som lagres (`request.params.id` i stedet for `request.params.by`)
+🏆  Bytt ut `:by` med `:id` i routingen fra forrige oppgave og endre slik at det er id som lagres (`request.params.id` i stedet for `request.params.by`)
 
 <details>
-<summary>🚨 &nbsp; Løsningsforslag</summary>
+<summary>🚨  Løsningsforslag</summary>
 
 ```javascript
 app.get('/temperatur/:id', function (request, response) {
@@ -411,7 +411,7 @@ app.get('/temperatur/:id', function (request, response) {
 ```
 </details>
 
-🏆 &nbsp;&nbsp; Lag funksjonen `hentTemperatur(id)` som henter informasjon om været fra yr.no:
+🏆  Lag funksjonen `hentTemperatur(id)` som henter informasjon om været fra yr.no:
 
 1. Lag en funksjon `hentTemperatur(id)` som tar inn en id og returnerer "Her skal vi finne temperaturen": 
 
@@ -450,7 +450,7 @@ Om det fungerer vil se noe lignende dette på skjermen:
 <img width="1713" alt="image" src="https://user-images.githubusercontent.com/46678893/211004257-ca4adead-feef-4f8d-a5c4-b5d84c8fce56.png">
 
 <details>
-<summary>🚨 &nbsp; Løsningsforslag</summary>
+<summary>🚨  Løsningsforslag</summary>
 
 ```javascript
 app.get('/temperatur/:id', async function (request, response) {
@@ -509,12 +509,12 @@ Det vi har gjort er å hente ut kun den informasjonen vi er interessert i. Under
 - `data.dayIntervals[0]` henter ut informasjonen om været i dag fra liste `dayIntervals`. Vi får dagens vær fordi denne ligger først i listen, og ved å skrive `[0]` sier vi at vi ønsker å få det som ligger først. Om vi hadde ønsket været for i morgen kunne vi skrevet `data.dayIntervals[1]`. Legg merke til at vi begynner å telle på 0 og ikke 1, det vil si at 0 er det første, og 1 er det andre osv...
 - `data.dayIntervals[0].temperature` henter ut informasjonen om temperatur for dagen i dag og resultatet er det som ble vist tidligere. Hvis vi ville hatt informasjon om vinden i stedet kunne vi skrevet `data.dayIntervals[0].wind`
 
-🏆 &nbsp;&nbsp; Endre funksjonen `hentTemperatur(id)` slik at den kun returnerer data om temperaturen i dag ved å legge inn `.then((data) => data.dayIntervals[0].temperature)`
+🏆  Endre funksjonen `hentTemperatur(id)` slik at den kun returnerer data om temperaturen i dag ved å legge inn `.then((data) => data.dayIntervals[0].temperature)`
 
 Besøk http://localhost:3000/temperatur/1-72837 og sjekk at du får tilbake `{"value":-2.1,"min":-2.4,"max":-1.7}`. OBS: tallene vil være annerledes enn i denne teksten fordi de ble hentet 6. januar. 
 
 <details>
-<summary>🚨 &nbsp; Løsningsforslag</summary>
+<summary>🚨  Løsningsforslag</summary>
 
 ```javascript
 async function hentTemperatur(id) {
@@ -530,12 +530,12 @@ async function hentTemperatur(id) {
 
 <br/>
 
-🏆 &nbsp;&nbsp; Endre routingen for "/temperatur/:id" slik at den returnerer teksten "Temperatur nå: [value], minste temperatur: [min temperaturen], maks temperatur: [maks temperaturen]". Sjekk hintet om du er usikker på hvordan du henter ut de ulike gradene eller hvordan det kan legges til i teksten. 
+🏆  Endre routingen for "/temperatur/:id" slik at den returnerer teksten "Temperatur nå: [value], minste temperatur: [min temperaturen], maks temperatur: [maks temperaturen]". Sjekk hintet om du er usikker på hvordan du henter ut de ulike gradene eller hvordan det kan legges til i teksten. 
 
 Besøk http://localhost:3000/temperatur/1-72837 og sjekk været i Oslo for i dag. 
 
 <details>
-<summary>💡 &nbsp; Hint </summary>
+<summary>💡  Hint </summary>
 
 Du kan hente ut gradene ved å skrive `temperatur.min` og `temperatur.max`. 
 
@@ -543,7 +543,7 @@ Du kan legge inn dette i teksten ved å bruke de spesielle fnuttene ``` `` ``` o
 </details>
 
 <details>
-<summary>🚨 &nbsp; Løsningsforslag</summary>
+<summary>🚨  Løsningsforslag</summary>
 
 ```javascript
 app.get('/temperatur/:id', async function (request, response) {
@@ -558,7 +558,7 @@ app.get('/temperatur/:id', async function (request, response) {
 
 <br/>
 
-🏆 &nbsp;&nbsp; Sjekk været i Trondheim ved å bruke id `1-211102`
+🏆  Sjekk været i Trondheim ved å bruke id `1-211102`
 
 Hvis du ønsker å sjekke været et annet sted kan du finne id-en til stedet ved å: 
 1. Gå til yr.no
