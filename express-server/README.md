@@ -41,22 +41,7 @@ Sjekk hvilken node-versjon du bruker ved å skrive dette i terminalen:
 node -v
 ```
 
-Da får du tilbake et svar på formatet `v19.0.1`. Hvis du har en versjon under `v18.0.0` må du følge stegene under, hvis du har over kan du hoppe til neste steg i oppsettet. 
-
-Skriv det følgende i terminalen for å laste ned den nyeste versjonen av node:
-
-```
-npm install -g n
-```
-
-```
-n latest
-```
-
-Sjekk at du har fått en versjon over `v18.0.0` ved å skrive: 
-```
-node -v
-```
+Da får du tilbake et svar på formatet `v19.0.1`. Hvis du har en versjon under `v18.0.0` må du si i fra til en av oss, så skal vi hjelpe deg.
 
 
 ### Opprette et Node.js prosjekt
