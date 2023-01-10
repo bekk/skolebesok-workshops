@@ -3,6 +3,7 @@
 I denne workshoppen skal du prøve å få hunden Pelle til å bevege seg på skjermen ved bruk av animasjoner i CSS.
 
 ## Kort om animasjoner i CSS
+Nå skal vi se litt på hvordan man kan lage animasjoner med CSS. Underveis kommer det til å være en del eksempler, og om du ønsker å se hvordan dette ser ut underveis kan du sjekke det ut [HER](https://codepen.io/sarahjelle/pen/yLqJree)
 
 ### @keyframes
 
@@ -87,8 +88,16 @@ Nå har vi lært hvordan vi kan bruke `@keyframes` for å styre utseende til ani
 -   **animation-duration** brukes for å definere hvor lenge en sekvens (`@keyframes`) skal vare. Hvor lang tid elementet skal bruke fra start (0%) til slutt (100%).
 -   **animation-iteration-count** brukes for å definere hvor mange ganger elementet skal gjennomføre sekvensen.
 
+
+## Emoji-guide
+Du kommer til å se noen emojis i oppgavene. De betyr ca det her:
+
+- 🏆 Oppgave: Her er hva du skal gjøre
+- 💡 Tips: Litt ekstra info som kan være greit å ha for å løse en oppgave
+- 🚨 Løsningsforslag: Her finner du en komplett gjennomgang av hvordan du _kan_ løse oppgaven
+
 ## Oppgaver
-Pelle er klar til å bevege seg, og logrer allerede med halen. [Koden finner du her](https://codepen.io/sarahjelle/pen/yLqJree), og du trenger kun å gjøre endringer i CSS-filen. 
+Pelle er klar til å bevege seg, og logrer allerede med halen. [Koden finner du her](https://codepen.io/sarahjelle/pen/eYjzXqZ), og du trenger kun å gjøre endringer i CSS-filen. 
 
 ---
 
@@ -214,6 +223,8 @@ For å få Pelle til å gå frem og tilbake over hele skjermen kan du følge ste
 For å få Pelle til å gå saktere kan du endre på `animation-duration` 
 
 </details>  
+
+<br/> 
 
 🏆 Endre retningen til Pelle slik at han ikke begynner å gå baklengs. 
 
