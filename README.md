@@ -4,9 +4,10 @@ Velkommen til workshop med Bekk! ✨
 
 I dag kan du velge mellom to ulike oppgaver, og oppgaveteksten finner du ved å trykke på lenkene under. 
 
-Vi er tilgjengelig for hjelp underveis, og det er bare å huke tak i oss om du lurer på noe ☺️
+## 🚨 Viktig informasjon 🚨
+Det er alltid vanskelig å lære seg noe nytt, og det er veldig forståelig hvis du ikke skjønner alt. Vi forventer ikke at noen skal klare å komme gjennom alt, og det viktigste med workshoppen er å prøve noe nytt og ha det gøy🤩
 
-Om du blir fort ferdig kan du begynne på den andre oppgaven om du ønsker. 
+Vi er tilgjengelig hele tiden for å svare på spørsmål, og det er bare å fyre løs! 
 
 ## Animasjoner
 
