@@ -35,15 +35,6 @@ mkdir express-server
 cd express-server
 ```
 
-### Sjekk Node-versjonen din
-Sjekk hvilken node-versjon du bruker ved å skrive dette i terminalen: 
-```
-node -v
-```
-
-Da får du tilbake et svar på formatet `v19.0.1`. Hvis du har en versjon under `v18.0.0` må du si i fra til en av oss, så skal vi hjelpe deg.
-
-
 ### Opprette et Node.js prosjekt
 For å opprette et node-prosjekt følger du stegene under. Pass på at du er i riktig mappe (`express-server`)
 
@@ -311,6 +302,27 @@ function hentFakta() {
 		.catch((error) => console.log(error)); // Print en feilmelding om noe går galt
 }
 ```
+
+**Hvis dette ikke funker: **
+
+Sjekk hvilken node-versjon du bruker ved å skrive dette i terminalen: 
+```
+node -v
+```
+
+Da får du tilbake et svar på formatet `v19.0.1`. Hvis du har en versjon under `v18.0.0` må du gjøre følgende: 
+
+1. Skriv følgende i terminalen (pass på at du er i riktig mappe): 
+```
+npm install node-fetch
+```
+
+2. Legg til følgende før funskjonen `hentFakta()` i `index.js`: 
+```
+const fetch = require(node-fetch)
+```
+
+Da får du tilbake et svar på formatet `v19.0.1`. Hvis du har en versjon under `v18.0.0` må du si i fra til en av oss, så skal vi hjelpe deg.
 
 Hvis du besøker http://localhost:3000/fakta nå vil du kun få se `{}` på skjermen. Dette skjer fordi `fetch()` ikke gir svaret tilbake med en gang, men returnerer en `Promise`. Dette er et objekt som har fått beskjed om å gjennomføre en oppgave (i dette tilfellet å hente en fakta om katter), og når `fetch()` er ferdig inneholder objektet faktaen vi har hentet. Vi kan tenke på dette som at `fetch()` returnerer "Jeg henter fakta" og etter at den har brukt den tiden den trenger for å hente så får vi den faktiske verdien som vi er interessert i. Siden `fetch()` returnerer en verdi med en gang (selv om det ikke er den vi vil ha) får vi aldri tak i faktaen. Vi må derfor be vår funksjon om å *vente* på svar fra `fetch()`. Dette gjør vi ved å gjøre våre funksjoner asynkrone, slik at vi kan si "vent før du fortsetter". 
 
