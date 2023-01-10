@@ -288,7 +288,7 @@ function hentFakta() {
 
 2. Bruk denne funksjonen i routingen for `/fakta` som du lagde i stad ved å kalle funksjonen `hentFakta()`:
 ```javascript
-app.get('/fakta', function (req, res) {
+app.get('/fakta', function (request, response) {
 	const fakta = hentFakta();
 	res.send(fakta);
 });
@@ -364,7 +364,7 @@ Hvis du besøker http://localhost:3000/fakta skal du nå få en fakta om katter 
 <summary>🚨  Løsningsforslag</summary>
 
 ```javascript
-app.get('/fakta', async function (req, res) {
+app.get('/fakta', async function (request, response) {
 	const fakta = await hentFakta();
 	res.send(fakta);
 });
