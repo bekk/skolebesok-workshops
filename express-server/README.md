@@ -314,7 +314,7 @@ Da får du tilbake et svar på formatet `v19.0.1`. Hvis du har en versjon under 
 
 1. Skriv følgende i terminalen (pass på at du er i riktig mappe): 
 ```
-npm install node-fetch
+npm install node-fetch@2
 ```
 
 2. Legg til følgende før funskjonen `hentFakta()` i `index.js`: 
