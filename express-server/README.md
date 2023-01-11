@@ -23,17 +23,11 @@ Du kommer til å se noen emojis i oppgavene. De betyr ca det her:
 ## 💻 Oppsett 
 For å sette opp det vi trenger for å lage serveren skal vi bruke terminalen. Under finner du informasjon om hva du må gjøre for å komme i gang. 
 
-1. Start med å åpne terminalen. 
+1. Lag en mappe som heter `express-server` der du ønsker å lagre koden. 
 
-2. Lag en ny mappe ved å lime inn følgende kommando i terminalen: 
-```
-mkdir express-server
-```
+2. Åpne mappen i VSCode eller ønsket program. 
 
-3. Gå inn i mappen du nettopp lagde:
-```
-cd express-server
-```
+3. Åpne en terminal i VSCode ved å trykke `Terminal > New terminal`
 
 ### Opprette et Node.js prosjekt
 For å opprette et node-prosjekt følger du stegene under. Pass på at du er i riktig mappe (`express-server`)
