@@ -262,8 +262,8 @@ Besøk http://localhost:3000/fakta og se om du får meldingen.
 <summary>🚨  Løsningsforslag</summary>
 
 ```javascript
-app.get('/fakta', function (req, res) {
-	res.send('Her kommer det snart fakta');
+app.get('/fakta', function (request, response) {
+	response.send('Her kommer det snart fakta');
 });
 ```
 
@@ -284,7 +284,7 @@ function hentFakta() {
 ```javascript
 app.get('/fakta', function (request, response) {
 	const fakta = hentFakta();
-	res.send(fakta);
+	response.send(fakta);
 });
 ```
 
