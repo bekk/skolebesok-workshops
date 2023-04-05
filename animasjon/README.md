@@ -102,7 +102,7 @@ Pelle er klar til å bevege seg, og logrer allerede med halen. [Koden finner du 
 ---
 
 ### Oppgave 1 - Få halen til å logre raskere
-Det er allerede lagt til animasjon på halen til felle. Dette er gjort ved å lage en `@keyframes` med navn `beveg-hale` og bruke denne i `.hale`. 
+Det er allerede lagt til animasjon på halen til Pelle. Dette er gjort ved å lage en `@keyframes` med navn `beveg-hale` og bruke denne i `.hale`. 
 
 🏆 Få halen til å logre raskere ved å endre på varigheten til animasjonen. 
 
@@ -171,7 +171,7 @@ Vi ønsker at Pelle skal bevege tungen opp og ned. Det er alt laget en animasjon
 
 1. Sett `animation-name` til å være `beveg-tunge`.
 2. Sett varigheten på animasjonen til 1 sekund (`animation-duration`)
-3. Få animasjonen til å vare evig ved å sette 
+3. Få animasjonen til å vare evig ved å bruke `animation-iteration-count`
 
 <details>
 <summary>🚨 Løsningsforslag</summary>
@@ -278,6 +278,7 @@ Du kan også se tilbake på hvordan du gjorde det med ørene halen.
 
 </details>  
 
+<details>
 <summary>🚨 Løsningsforslag</summary>
 
 ```css
