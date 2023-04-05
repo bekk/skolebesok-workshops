@@ -320,9 +320,9 @@ const fetch = require(`node-fetch`)
 
 4. Gjør routingen `/fakta` og `hentFakta()` asynkron og be de om å vente på svar fra `fetch()`. Vi gjør funksjonene asynkrone ved å legge til `async` foran begge funksjoner og ber de om å vente på svar fra `fetch()` ved å legge til `await`.
 ```javascript
-app.get('/fakta', async function (req, res) {
+app.get('/fakta', async function (request, response) {
 	const fakta = await hentFakta();
-	res.send(fakta);
+	response.send(fakta);
 });
 
 async function hentFakta() {
