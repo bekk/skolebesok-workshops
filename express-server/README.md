@@ -46,7 +46,7 @@ I mappen du har laget har det nå kommet en fil som heter `package.json`. Dette 
 ### Installer nodemon
 Nå ønsker vi å installere en pakke som heter `nodemon`. Denne brukes for å automatisk starte serveren på nytt hver gang man lagrer en endring. Uten denne må man selv stoppe og starte serveren for hver endring man gjør. Installer og sett opp nodemon ved å følge stegene: 
 
-1. I terminalen skriver du inn følgende kommanda for å installere pakken (pass på å at terminalen er i mappen `express-server`): 
+1. I terminalen skriver du inn følgende kommando for å installere pakken (pass på å at terminalen er i mappen `express-server`): 
 ```
 npm install -g nodemon
 ```
@@ -149,7 +149,7 @@ Server lytter på port 3000
 1. Åpne et vindu i nettleseren
 2. Gå til http://localhost:3000/
 
-Når du besøker denne siden sender du et kall til api-routingen "/". Siden vi ikke har fortalt serveren hva den skal gjøre når den mottar et slikt kall vil den svare med feilmeldingen `Cannot GET /` som du ser på skjermen. Dette skal vi fikse gjennom oppgavene!
+Når du besøker denne siden sender du et kall til api-routingen "/". Dette er endingen på url'en. Siden vi ikke har fortalt serveren hva den skal gjøre når den mottar et slikt kall vil den svare med feilmeldingen `Cannot GET /` som du ser på skjermen. Dette skal vi fikse gjennom oppgavene!
 
 ---
 ## 🏆 Oppgaver
@@ -288,7 +288,7 @@ app.get('/fakta', function (request, response) {
 });
 ```
 
-3. Nå ønsker vi å bytte ut meldingen `"Her kommer det snart fakta"` med en tilfeldig fakta om katter som vi henter fra https://catfact.ninja/fact. For å gjøre dette bruker vi metoden `fetch()` som lar oss snakke med andre API-er: 
+3. Nå ønsker vi å bytte ut meldingen `"Her kommer det snart fakta"` med en tilfeldig fakta om katter som vi henter fra https://catfact.ninja/fact. For å gjøre dette bruker vi metoden `fetch()` som lar oss snakke med andre API-er (les videre under dersom du mottar et tomt object som ser sånn ut --> {} ): 
 ```javascript
 function hentFakta() {
 	return fetch(`https://catfact.ninja/fact`)
