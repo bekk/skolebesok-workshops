@@ -288,7 +288,7 @@ app.get('/fakta', function (request, response) {
 });
 ```
 
-3. Nå ønsker vi å bytte ut meldingen `"Her kommer det snart fakta"` med en tilfeldig fakta om katter som vi henter fra https://catfact.ninja/fact. For å gjøre dette bruker vi metoden `fetch()` som lar oss snakke med andre API-er (les videre under dersom du mottar et tomt object som ser sånn ut --> {} ): 
+3. Nå ønsker vi å bytte ut meldingen `"Her kommer det snart fakta"` med en tilfeldig fakta om katter som vi henter fra https://catfact.ninja/fact. For å gjøre dette bruker vi metoden `fetch()` som lar oss snakke med andre API-er (i nettleser skal du få opp et tomt objekt --> {} ): 
 ```javascript
 function hentFakta() {
 	return fetch(`https://catfact.ninja/fact`)
@@ -297,7 +297,7 @@ function hentFakta() {
 }
 ```
 
-**Hvis dette ikke funker: **
+**Dersom du ikke får kjørt serveren se på punkt 1 og 2, hvis ikke hopp til punkt 3: **
 
 Sjekk hvilken node-versjon du bruker ved å skrive dette i terminalen: 
 ```
@@ -316,7 +316,7 @@ npm install node-fetch@2
 const fetch = require(`node-fetch`)
 ```
 
-Hvis du besøker http://localhost:3000/fakta nå vil du kun få se `{}` på skjermen. Dette skjer fordi `fetch()` ikke gir svaret tilbake med en gang, men returnerer en `Promise`. Dette er et objekt som har fått beskjed om å gjennomføre en oppgave (i dette tilfellet å hente en fakta om katter), og når `fetch()` er ferdig inneholder objektet faktaen vi har hentet. Vi kan tenke på dette som at `fetch()` returnerer "Jeg henter fakta" og etter at den har brukt den tiden den trenger for å hente så får vi den faktiske verdien som vi er interessert i. Siden `fetch()` returnerer en verdi med en gang (selv om det ikke er den vi vil ha) får vi aldri tak i faktaen. Vi må derfor be vår funksjon om å *vente* på svar fra `fetch()`. Dette gjør vi ved å gjøre våre funksjoner asynkrone, slik at vi kan si "vent før du fortsetter". 
+3. Hvis du besøker http://localhost:3000/fakta nå vil du kun få se `{}` på skjermen. Dette skjer fordi `fetch()` ikke gir svaret tilbake med en gang, men returnerer en `Promise`. Dette er et objekt som har fått beskjed om å gjennomføre en oppgave (i dette tilfellet å hente en fakta om katter), og når `fetch()` er ferdig inneholder objektet faktaen vi har hentet. Vi kan tenke på dette som at `fetch()` returnerer "Jeg henter fakta" og etter at den har brukt den tiden den trenger for å hente så får vi den faktiske verdien som vi er interessert i. Siden `fetch()` returnerer en verdi med en gang (selv om det ikke er den vi vil ha) får vi aldri tak i faktaen. Vi må derfor be vår funksjon om å *vente* på svar fra `fetch()`. Dette gjør vi ved å gjøre våre funksjoner asynkrone, slik at vi kan si "vent før du fortsetter". 
 
 4. Gjør routingen `/fakta` og `hentFakta()` asynkron og be de om å vente på svar fra `fetch()`. Vi gjør funksjonene asynkrone ved å legge til `async` foran begge funksjoner og ber de om å vente på svar fra `fetch()` ved å legge til `await`.
 ```javascript
